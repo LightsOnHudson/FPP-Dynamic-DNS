@@ -62,7 +62,7 @@ $DEBUG = urldecode($pluginSettings['DEBUG']);
 </ul>
 <p>Configuration:
 <ul>
-<li>This plugin allows you to update your Dynamic DNS host on <a href="www.duckdns.org">DuckDNS</a>
+<li>This plugin allows you to update your Dynamic DNS host on <a href="http://www.duckdns.org">DuckDNS</a>
 </ul>
 
 
