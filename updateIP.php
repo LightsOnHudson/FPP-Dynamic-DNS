@@ -3,7 +3,7 @@
 error_reporting(0);
 ob_flush();flush();
 
-//Version 1.0
+//Version 1.0 applying permissions
 
 $pluginName ="DynamicDNS";
 $MatrixMessageVersion = "1.0";
