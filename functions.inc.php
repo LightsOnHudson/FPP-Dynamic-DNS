@@ -50,24 +50,21 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	$CURL_CMD_DNS_PROVIDER = "/usr/bin/curl -s '".$PROVIDER_CMD."'";
 	
 
+	$ch = curl_init ();
+	curl_setopt ( $ch, CURLOPT_URL, $PROVIDER_CMD);
 	
-	// Get cURL resource
-	$curl = curl_init();
-	// Set some options - we are passing in a useragent too here
-	curl_setopt_array($curl, array(
-			CURLOPT_RETURNTRANSFER => 1,
-			CURLOPT_URL => $PROVIDER_CMD,
-			CURLOPT_USERAGENT => 'Codular Sample cURL Request'
-	));
-	// Send the request & save response to $resp
-	$resp = curl_exec($curl);
-	// Close request to clear up some resources
-	curl_close($curl);
+	curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+	curl_setopt ( $ch, CURLOPT_WRITEFUNCTION, 'do_nothing' );
+	curl_setopt ( $ch, CURLOPT_VERBOSE, false );
+	
+	$result = curl_exec ( $ch );
+	logEntry ( "Curl result: " . $result ); // $result;
+	curl_close ( $ch );
 	
 	
 	
 	logEntry("Updating IP address: " .$IP_ADDRESS." for provider: ".$PROVIDER. " for hostname: ".$DNS_HOSTNAME. " with command: ".$PROVIDER_CMD);
-	logEntry("Curl result: ".$resp);
+	//logEntry("Curl result: ".$resp);
 }
 
 function printHourFormats($ELEMENT_NAME,$ELEMENT_SELECTED)

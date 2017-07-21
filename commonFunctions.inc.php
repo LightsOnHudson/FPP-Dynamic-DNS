@@ -1,5 +1,9 @@
 <?php
 
+//curl do nothing function
+function do_nothing($curl, $input) {
+	return 0; // aborts transfer with an error
+}
 
 //update plugin
 
