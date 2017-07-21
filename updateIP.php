@@ -52,8 +52,9 @@ if($ENABLED != "ON") {
 	exit(0);
 
 } else {
-	if(($pid = lockHelper::lock()) === FALSE) {
+	if(($pid = lockHelper::lock()) === FALSE) 
 		exit(0);
+	
 }
 
 $PROVIDER = "duckdns.org";
