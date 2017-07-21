@@ -34,26 +34,34 @@ if(isset($_POST['submit']))
 	
 	WriteSettingToFile("DNS_HOSTNAME",urlencode($_POST["DNS_HOSTNAME"]),$pluginName);
 	WriteSettingToFile("DEBUG",urlencode($_POST["DEBUG"]),$pluginName);
+	
+	//read the settings back into the variables here???
+	$DNS_HOSTNAME = urldecode($_POST["DNS_HOSTNAME"]);
+	$ENABLED = urldecode($_POST["ENABLED"]);
+
+	logEntry("Reading in settings from $_POST for: ".$pluginName);
+} else {
+
+
+	//re-read the settings so they are read in
+	$pluginConfigFile = $settings['configDirectory'] . "/plugin." .$pluginName;
+	if (file_exists($pluginConfigFile)) {
+		$pluginSettings = parse_ini_file($pluginConfigFile);
+	
+		logEntry("Reading in settings from file for: ".$pluginName);
+		
+	}
+	
+	
+	
+	//	Hostname on DuckDNS
+	$DNS_HOSTNAME = urldecode($pluginSettings['DNS_HOSTNAME']);
+	//	$ENABLED = urldecode(ReadSettingFromFile("ENABLED",$pluginName));
+	$ENABLED = $pluginSettings['ENABLED'];
+	
+	$DEBUG = urldecode($pluginSettings['DEBUG']);
+
 }
-
-
-//re-read the settings so they are read in
-$pluginConfigFile = $settings['configDirectory'] . "/plugin." .$pluginName;
-if (file_exists($pluginConfigFile)) {
-	$pluginSettings = parse_ini_file($pluginConfigFile);
-
-	logEntry("Reading in settings for: ".$pluginName);
-	
-}
-	
-	
-	
-//	Hostname on DuckDNS
-$DNS_HOSTNAME = urldecode($pluginSettings['DNS_HOSTNAME']);
-//	$ENABLED = urldecode(ReadSettingFromFile("ENABLED",$pluginName));
-$ENABLED = $pluginSettings['ENABLED'];
-
-$DEBUG = urldecode($pluginSettings['DEBUG']);
 
 ?>
 
