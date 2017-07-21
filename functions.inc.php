@@ -14,13 +14,17 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	
 	
 
-	system($CURL_CMD, $output);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL,$IPINFO_PROVIDER);
+	//curl_setopt($ch, CURLOPT_POST, 1);
+	//curl_setopt($ch, CURLOPT_USERPWD, PSSWDINFO);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_VERBOSE, 0);
 	
-	if($DEBUG) {
-		print_r($output);
-	}
+	$IP_ADDRESS= curl_exec ($ch);
+	curl_close ($ch);
 	
-	$IP_ADDRESS = $output[0];
+	//$IP_ADDRESS = $output[0];
 	
 	
 	//change based on the provider
@@ -41,14 +45,19 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	
 	$CURL_CMD_DNS_PROVIDER = "/usr/bin/curl -s ".$PROVIDER_CMD;
 	
-	system($CURL_CMD_DNS_PROVIDER, $outputUpdateIP);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL,$PROVIDER_CMD);
+	//curl_setopt($ch, CURLOPT_POST, 1);
+	//curl_setopt($ch, CURLOPT_USERPWD, PSSWDINFO);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_VERBOSE, 0); 
 	
-	if($DEBUG){
-		print_r($outputUpdateIP);
-	}
+	$result= curl_exec ($ch);
+	curl_close ($ch);
 	
 	
 	logEntry("Updating IP address: " .$IP_ADDRESS." for provider: ".$PROVIDER. " for hostname: ".$DNS_HOSTNAME. " with command: ".$PROVIDER_CMD);
+	logEntry("Curl result: ".$result);
 }
 
 function printHourFormats($ELEMENT_NAME,$ELEMENT_SELECTED)
