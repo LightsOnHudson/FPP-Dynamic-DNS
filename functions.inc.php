@@ -1,5 +1,18 @@
 <?php
 
+
+//function to update the DNS using the DynamicDNS Host
+
+function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME) {
+	
+	
+	global $DEBUG;
+	
+	
+	logEntry("Updating IP address for provider: ".$PROVIDER. " for hostname: ".$DNS_HOSTNAME);
+
+}
+
 function printHourFormats($ELEMENT_NAME,$ELEMENT_SELECTED)
 
 

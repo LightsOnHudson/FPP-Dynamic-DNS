@@ -33,10 +33,12 @@ if(isset($_POST['submit']))
 	
 	
 	WriteSettingToFile("DNS_HOSTNAME",urlencode($_POST["DNS_HOSTNAME"]),$pluginName);
+	WriteSettingToFile("API_TOKEN",urlencode($_POST["API_TOKEN"]),$pluginName);
 	WriteSettingToFile("DEBUG",urlencode($_POST["DEBUG"]),$pluginName);
 	
 	//read the settings back into the variables here???
 	$DNS_HOSTNAME = urldecode($_POST["DNS_HOSTNAME"]);
+	$API_TOKEN = urldecode($_POST["API_TOKEN"]);
 	$ENABLED = urldecode($_POST["ENABLED"]);
 
 	logEntry("Reading in settings from $_POST for: ".$pluginName);
@@ -58,7 +60,7 @@ if(isset($_POST['submit']))
 	$DNS_HOSTNAME = urldecode($pluginSettings['DNS_HOSTNAME']);
 	//	$ENABLED = urldecode(ReadSettingFromFile("ENABLED",$pluginName));
 	$ENABLED = $pluginSettings['ENABLED'];
-	
+	$API_TOKEN = urldecode($_POST["API_TOKEN"]);
 	$DEBUG = urldecode($pluginSettings['DEBUG']);
 
 }
@@ -106,6 +108,13 @@ echo "<p/> \n";
 
 echo "Duck DNS Hostname (christmas.thesmiths.org): \n";
 echo "<input type=\"text\" size=\"64\" name=\"DNS_HOSTNAME\" value=\"".$DNS_HOSTNAME."\"> \n";
+echo "<p/> \n";
+
+
+
+
+echo "API Token: \n";
+echo "<input type=\"text\" size=\"64\" name=\"API_TOKEN\" value=\"".$API_TOKEN."\"> \n";
 echo "<p/> \n";
 
 ?>
