@@ -43,9 +43,9 @@ if(isset($_POST['submit']))
 	$API_TOKEN = urldecode($_POST["API_TOKEN"]);
 	$ENABLED = urldecode($_POST["ENABLED"]);
 
-	logEntry("Reading in settings from $_POST for: ".$pluginName);
-} else {
+}
 
+sleep(1);
 
 	//re-read the settings so they are read in
 	$pluginConfigFile = $settings['configDirectory'] . "/plugin." .$pluginName;
@@ -61,11 +61,13 @@ if(isset($_POST['submit']))
 	//	Hostname on DuckDNS
 	$DNS_HOSTNAME = urldecode($pluginSettings['DNS_HOSTNAME']);
 	//	$ENABLED = urldecode(ReadSettingFromFile("ENABLED",$pluginName));
-	$ENABLED = $pluginSettings['ENABLED'];
+	
 	$API_TOKEN = urldecode($pluginSettings["API_TOKEN"]);
 	$DEBUG = urldecode($pluginSettings['DEBUG']);
 
-}
+
+
+$ENABLED = $pluginSettings['ENABLED'];
 
 $CRON_ENTRY = "1 0 * * * /usr/bin/php ".$settings['pluginDirectory']."/".$pluginName."/".$UPDATE_IP_CMD." >> " . $logFile;
 
