@@ -1,7 +1,7 @@
 <?php
 
 $pages = Array(
-	'name' => "Matrix Message",
+	'name' => "Dynamic DNS",
 	'type' => "output",
 	'page' => "plugin_setup.php");
 
