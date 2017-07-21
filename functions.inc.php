@@ -20,7 +20,7 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 		print_r($output);
 	}
 	
-	$IP_ADDRESS = $output;
+	$IP_ADDRESS = $output[0];
 	
 	
 	//change based on the provider
