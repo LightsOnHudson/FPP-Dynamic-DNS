@@ -8,6 +8,8 @@ include_once "commonFunctions.inc.php";
 $pluginName = "DynamicDNS";
 $pluginVersion ="1.0";
 
+$UPDATE_IP_CMD = "updateIP.php";
+
 //1.0 Dyanmic DNS with DuckDNS
 
 $logFile = $settings['logDirectory']."/".$pluginName.".log";
@@ -65,6 +67,28 @@ if(isset($_POST['submit']))
 
 }
 
+$CRON_ENTRY = "1 0 * * * /usr/bin/php ".$settings['pluginDirectory']."/".$pluginName."/".$UPDATE_IP_CMD." >> " . $logFile;
+
+switch ($ENABLED) {
+	
+	case "ON":
+		$cron_file = "/tmp/crontab.txt";
+		file_put_contents($cron_file, $CRON_ENTRY.PHP_EOL);
+		logEntry("Adding cron entry: ".$CRON_ENTRY." to cronjob");
+		exec("crontab $cron_file");
+		break;
+		
+	case "":
+		logEntry("Removing Cronjob(s)");
+		exec("crontab -r");
+		break;
+		
+	default:
+		logEntry("Removing Cronjob(s)");
+		exec("crontab -r");
+		break;
+	
+}
 //check to see if Crontab entry is there
 
 //$crontabOutput = shell_exec("/usr/bin/crontab -l");
@@ -78,7 +102,7 @@ if($out != "" || $out != null) {
 	$crontTabEntries = explode("\n",$out);
 	
 	
-	print_r($crontTabEntries);
+//	print_r($crontTabEntries);
 } else {
 	logEntry("No crontab entries");
 }
