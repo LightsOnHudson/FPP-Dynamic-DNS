@@ -25,10 +25,12 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	
 	//change based on the provider
 	
-	switch($PROVIDER) {
+	switch(strtoupper($PROVIDER)) {
 		
 		case "DUCKDNS.ORG":
-			
+			if($DEBUG) {
+				logEntry("Provider is : ".$PROVIDER);
+			}
 			$PROVIDER_CMD = "https://duckdns.org/update/".$DNS_HOSTNAME."/".$API_TOKEN."/".$IP_ADDRESS;
 			break;
 			
