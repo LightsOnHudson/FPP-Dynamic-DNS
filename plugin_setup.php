@@ -72,6 +72,8 @@ if(isset($_POST['submit']))
 $out = shell_exec("/usr/bin/crontab -l 2> output");
 //echo $out ? $out : join("", file("output"));
 logEntry("Crontab status: ".$out ? $out : join("", file("output")));//);//, $sourceFile, $sourceLine)
+logEntry("OUT: ".$out);
+
 ?>
 
 <html>
