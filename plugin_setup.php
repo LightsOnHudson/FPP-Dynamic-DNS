@@ -28,6 +28,13 @@ if(isset($_POST['updatePlugin']))
 }
 
 
+if(isset($_POST['submit']))
+{
+	
+	
+	WriteSettingToFile("DNS_HOSTNAME",urlencode($_POST["DNS_HOSTNAME"]),$pluginName);
+	WriteSettingToFile("DEBUG",urlencode($_POST["DEBUG"]),$pluginName);
+}
 
 	
 	
@@ -55,9 +62,7 @@ $DEBUG = urldecode($pluginSettings['DEBUG']);
 </ul>
 <p>Configuration:
 <ul>
-<li>This plugin allows you to use the fpp-matrixtools plugin to output messages from the MessageQueue system</li>
-<li>Select your plugins to output to your matrix below and click SAVE</li>
-<li>Configure your Matrix first before selecting here</li>
+<li>This plugin allows you to update your Dynamic DNS host on <a href="www.duckdns.org">DuckDNS</a>
 </ul>
 
 
@@ -82,7 +87,7 @@ PrintSettingCheckbox($pluginName." Plugin", "ENABLED", $restart = 0, $reboot = 0
 echo "<p/> \n";
 
 
-
+echo "Duck DNS Hostname (christmas.thesmiths.org): \n";
 echo "<input type=\"text\" name=\"DNS_HOSTNAME\" value=\"".$DNS_HOSTNAME."\"> \n";
 echo "<p/> \n";
 
