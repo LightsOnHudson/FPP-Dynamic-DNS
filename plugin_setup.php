@@ -150,7 +150,7 @@ PrintSettingCheckbox($pluginName." Plugin", "ENABLED", $restart = 0, $reboot = 0
 echo "<p/> \n";
 
 
-echo "Duck DNS Hostname (christmas.thesmiths.org): \n";
+echo "Duck DNS Sub Hostname (lightsOnHudson): \n";
 echo "<input type=\"text\" size=\"64\" name=\"DNS_HOSTNAME\" value=\"".$DNS_HOSTNAME."\"> \n";
 echo "<p/> \n";
 
