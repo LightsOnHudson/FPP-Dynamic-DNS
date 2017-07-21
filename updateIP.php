@@ -23,7 +23,7 @@ require ("lock.helper.php");
 define('LOCK_DIR', '/tmp/');
 define('LOCK_SUFFIX', $pluginName.'.lock');
 
-
+$logFile = $settings['logDirectory']."/".$pluginName.".log";
 
 
 $pluginConfigFile = $settings['configDirectory'] . "/plugin." .$pluginName;
