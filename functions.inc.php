@@ -10,7 +10,7 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME) {
 	
 	
 	
-	$CURL_CMD = "/usr/bin/curl ".$IPINFO_PROVIDER;
+	$CURL_CMD = "/usr/bin/curl -s ".$IPINFO_PROVIDER;
 	
 	logEntry("Updating IP address for provider: ".$PROVIDER. " for hostname: ".$DNS_HOSTNAME);
 
