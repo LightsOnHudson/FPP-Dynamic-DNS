@@ -51,7 +51,7 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	
 
 	$ch = curl_init ();
-	curl_setopt ( $ch, CURLOPT_URL,$PROVIDER_CMD);
+	curl_setopt ( $ch, CURLOPT_URL,trim($PROVIDER_CMD));
 	
 	curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
 	curl_setopt ( $ch, CURLOPT_WRITEFUNCTION, 'do_nothing' );
