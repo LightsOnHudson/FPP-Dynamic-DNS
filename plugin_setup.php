@@ -69,7 +69,7 @@ sleep(1);
 
 $ENABLED = $pluginSettings['ENABLED'];
 
-$CRON_ENTRY = "1 0 * * * /usr/bin/php ".$settings['pluginDirectory']."/".$pluginName."/".$UPDATE_IP_CMD." >> " . $logFile;
+$CRON_ENTRY = "5 * * * * /usr/bin/php ".$settings['pluginDirectory']."/".$pluginName."/".$UPDATE_IP_CMD." >> " . $logFile;
 
 switch ($ENABLED) {
 	
