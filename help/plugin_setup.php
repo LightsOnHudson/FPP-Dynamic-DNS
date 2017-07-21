@@ -9,6 +9,6 @@ Once the account is created, you will need to get enter in the domain name (with
 You will also need to add the token into the API Token field that is presented to you upon account creation.<br/>
 <br/>
 
-<img src="/home/fpp/media/plugins/DynamicDNS/help/duckdnsConfig.jpg">
+<img src='/home/fpp/media/plugins/DynamicDNS/help/duckdnsConfig.jpg'/>
 
 
