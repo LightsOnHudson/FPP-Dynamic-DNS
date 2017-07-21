@@ -70,8 +70,8 @@ if(isset($_POST['submit']))
 //$crontabOutput = shell_exec("/usr/bin/crontab -l");
 // we'll execute a php script as an example:
 $out = shell_exec("/usr/bin/crontab -l 2> output");
-echo $out ? $out : join("", file("output"));
-
+//echo $out ? $out : join("", file("output"));
+logEntry("Crontab status: ".$out ? $out : join("", file("output")));//);//, $sourceFile, $sourceLine)
 ?>
 
 <html>
