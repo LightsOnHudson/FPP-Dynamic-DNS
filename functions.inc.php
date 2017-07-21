@@ -26,8 +26,6 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	
 	//$IP_ADDRESS = $output[0];
 	
-	//temporary IP adress to check in duckdns
-	$IP_ADDRESS = "65.102.234.185";
 	
 	//change based on the provider
 	
