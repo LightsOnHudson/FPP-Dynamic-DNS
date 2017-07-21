@@ -79,6 +79,8 @@ if($out != "" || $out != null) {
 	
 	
 	print_r($crontTabEntries);
+} else {
+	logEntry("No crontab entries");
 }
 
 ?>
