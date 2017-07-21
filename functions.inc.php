@@ -3,7 +3,7 @@
 
 //function to update the DNS using the DynamicDNS Host
 
-function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME) {
+function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	
 	
 	global $DEBUG, $IPINFO_PROVIDER;
@@ -12,12 +12,35 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME) {
 	
 	$CURL_CMD = "/usr/bin/curl -s ".$IPINFO_PROVIDER;
 	
-	logEntry("Updating IP address for provider: ".$PROVIDER. " for hostname: ".$DNS_HOSTNAME);
+	
 
 	system($CURL_CMD, $output);
 	
-	print_r($output);
+	if($DEBUG) {
+		print_r($output);
+	}
 	
+	$IP_ADDRESS = $output;
+	
+	
+	//change based on the provider
+	
+	switch($PROVIDER) {
+		
+		case "DUCKDNS.ORG":
+			
+			$PROVIDER_CMD = "https://duckdns.org/update/".$DNS_HOSTNAME."/".$API_TOKEN."/".$IP_ADDRESS;
+			break;
+			
+		default:
+			
+			
+	}
+	
+	$CURL_CMD_DNS_PROVIDER = "/usr/bin/curl -s ".$PROVIDER_CMD;
+	
+	
+	logEntry("Updating IP address: " .$IP_ADDRESS." for provider: ".$PROVIDER. " for hostname: ".$DNS_HOSTNAME. " with command: ".$PROVIDER_CMD);
 }
 
 function printHourFormats($ELEMENT_NAME,$ELEMENT_SELECTED)

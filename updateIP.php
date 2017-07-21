@@ -55,7 +55,7 @@ if($ENABLED != "ON") {
 
 $PROVIDER = "duckdns.org";
 
-$DNS_STATUS = updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME);
+$DNS_STATUS = updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN);
 
 
 lockHelper::unlock();
