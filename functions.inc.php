@@ -41,6 +41,12 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	
 	$CURL_CMD_DNS_PROVIDER = "/usr/bin/curl -s ".$PROVIDER_CMD;
 	
+	system($CURL_CMD_DNS_PROVIDER, $outputUpdateIP);
+	
+	if($DEBUG){
+		print_r($outputUpdateIP);
+	}
+	
 	
 	logEntry("Updating IP address: " .$IP_ADDRESS." for provider: ".$PROVIDER. " for hostname: ".$DNS_HOSTNAME. " with command: ".$PROVIDER_CMD);
 }
