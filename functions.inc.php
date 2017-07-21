@@ -47,7 +47,7 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 			
 	}
 	
-	$CURL_CMD_DNS_PROVIDER = "/usr/bin/curl -s ".$PROVIDER_CMD;
+	$CURL_CMD_DNS_PROVIDER = "/usr/bin/curl -s \"".$PROVIDER_CMD."\"";
 	
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$PROVIDER_CMD);
