@@ -74,6 +74,13 @@ $out = shell_exec("/usr/bin/crontab -l 2> output");
 logEntry("Crontab status: ".$out ? $out : join("", file("output")));//);//, $sourceFile, $sourceLine)
 logEntry("OUT: ".$out);
 
+if($out != "" || $out != null) {
+	$crontTabEntries = explode("\n",$out);
+	
+	
+	print_r($crontTabEntries);
+}
+
 ?>
 
 <html>
