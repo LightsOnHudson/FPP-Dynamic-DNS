@@ -39,7 +39,7 @@ if (file_exists($pluginConfigFile))
 	$DNS_HOSTNAME = urldecode($pluginSettings['DNS_HOSTNAME']);
 	//	$ENABLED = urldecode(ReadSettingFromFile("ENABLED",$pluginName));
 	$ENABLED = $pluginSettings['ENABLED'];
-	$API_TOKEN = urldecode($_POST["API_TOKEN"]);
+	$API_TOKEN = urldecode($pluginSettings["API_TOKEN"]);
 	$DEBUG = urldecode($pluginSettings['DEBUG']);
 
 
