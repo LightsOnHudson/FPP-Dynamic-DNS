@@ -67,9 +67,10 @@ if(isset($_POST['submit']))
 
 //check to see if Crontab entry is there
 
-$crontabOutput = shell_exec("/usr/bin/crontab -l");
-
-echo "crontab output: ".$crontabOutput;
+//$crontabOutput = shell_exec("/usr/bin/crontab -l");
+// we'll execute a php script as an example:
+$out = shell_exec("/usr/bin/crontab -l 2> output");
+print $out ? $out : join("", file("output"));
 
 ?>
 
