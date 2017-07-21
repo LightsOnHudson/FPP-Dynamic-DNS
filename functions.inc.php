@@ -38,8 +38,8 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 				logEntry("Provider is : ".$PROVIDER);
 			}
 			
-			$PROVIDER_CMD = "https://www.duckdns.org/update?domains=".$DNS_HOSTNAME."&token=".$API_TOKEN."&ip=".$IP_ADDRESS."&verbose=true";
-		//	$PROVIDER_CMD = "https://duckdns.org/update/".$DNS_HOSTNAME."/".$API_TOKEN."/".$IP_ADDRESS;
+		//	$PROVIDER_CMD = "https://www.duckdns.org/update?domains=".$DNS_HOSTNAME."&token=".$API_TOKEN."&ip=".$IP_ADDRESS."&verbose=true";
+			$PROVIDER_CMD = "https://duckdns.org/update/".$DNS_HOSTNAME."/".$API_TOKEN."/".$IP_ADDRESS;
 			break;
 			
 		default:
@@ -47,7 +47,7 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 			
 	}
 	
-	$CURL_CMD_DNS_PROVIDER = "/usr/bin/curl -s '".$PROVIDER_CMD."'";
+	$CURL_CMD_DNS_PROVIDER = "/usr/bin/curl -s \"".$PROVIDER_CMD."\"";
 	
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$PROVIDER_CMD);
