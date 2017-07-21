@@ -36,11 +36,20 @@ if(isset($_POST['submit']))
 	WriteSettingToFile("DEBUG",urlencode($_POST["DEBUG"]),$pluginName);
 }
 
+
+//re-read the settings so they are read in
+$pluginConfigFile = $settings['configDirectory'] . "/plugin." .$pluginName;
+if (file_exists($pluginConfigFile)) {
+	$pluginSettings = parse_ini_file($pluginConfigFile);
+
+	logEntry("Reading in settings for: ".$pluginName);
+	
+}
 	
 	
 	
 //	Hostname on DuckDNS
-$DNS_HOSTNAME = $pluginSettings['DNS_HOSTNAME'];
+$DNS_HOSTNAME = urldecode($pluginSettings['DNS_HOSTNAME']);
 //	$ENABLED = urldecode(ReadSettingFromFile("ENABLED",$pluginName));
 $ENABLED = $pluginSettings['ENABLED'];
 
@@ -88,7 +97,7 @@ echo "<p/> \n";
 
 
 echo "Duck DNS Hostname (christmas.thesmiths.org): \n";
-echo "<input type=\"text\" name=\"DNS_HOSTNAME\" value=\"".$DNS_HOSTNAME."\"> \n";
+echo "<input type=\"text\" size=\"64\" name=\"DNS_HOSTNAME\" value=\"".$DNS_HOSTNAME."\"> \n";
 echo "<p/> \n";
 
 ?>
