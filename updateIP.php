@@ -11,6 +11,8 @@ $myPid = getmypid();
 
 $DEBUG=false;
 
+$IPINFO_PROVIDER = "ipinfo.io/ip";
+
 $skipJSsettings = 1;
 $fppWWWPath = '/opt/fpp/www/';
 set_include_path(get_include_path() . PATH_SEPARATOR . $fppWWWPath);
@@ -51,8 +53,9 @@ if($ENABLED != "ON") {
 
 }
 
+$PROVIDER = "duckdns.org";
 
-logEntry("Updating IP address");
+$DNS_STATUS = updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME);
 
 
 lockHelper::unlock();

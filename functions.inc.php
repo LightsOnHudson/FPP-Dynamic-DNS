@@ -6,11 +6,18 @@
 function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME) {
 	
 	
-	global $DEBUG;
+	global $DEBUG, $IPINFO_PROVIDER;
 	
+	
+	
+	$CURL_CMD = "/usr/bin/curl ".$IPINFO_PROVIDER;
 	
 	logEntry("Updating IP address for provider: ".$PROVIDER. " for hostname: ".$DNS_HOSTNAME);
 
+	system($CURL_CMD, $output);
+	
+	print_r($output);
+	
 }
 
 function printHourFormats($ELEMENT_NAME,$ELEMENT_SELECTED)
