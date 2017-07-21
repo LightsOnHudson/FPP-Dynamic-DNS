@@ -57,7 +57,7 @@ function updateDynamicDNSIP($PROVIDER, $DNS_HOSTNAME, $API_TOKEN) {
 	curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
 			CURLOPT_URL => $PROVIDER_CMD,
-			//CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+			CURLOPT_USERAGENT => 'Codular Sample cURL Request'
 	));
 	// Send the request & save response to $resp
 	$resp = curl_exec($curl);
