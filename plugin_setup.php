@@ -60,7 +60,7 @@ if(isset($_POST['submit']))
 	$DNS_HOSTNAME = urldecode($pluginSettings['DNS_HOSTNAME']);
 	//	$ENABLED = urldecode(ReadSettingFromFile("ENABLED",$pluginName));
 	$ENABLED = $pluginSettings['ENABLED'];
-	$API_TOKEN = urldecode($pluginSettings(["API_TOKEN"]));
+	$API_TOKEN = urldecode($pluginSettings["API_TOKEN"]);
 	$DEBUG = urldecode($pluginSettings['DEBUG']);
 
 }
